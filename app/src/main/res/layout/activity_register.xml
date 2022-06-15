@@ -18,13 +18,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <EditText
-        android:id="@+id/emailNameEditText"
+        android:id="@+id/emailEditText"
         android:hint="@string/e_mail"
         android:inputType="textEmailAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <EditText
-        android:id="@+id/passwordNameEditText"
+        android:id="@+id/passwordEditText"
         android:hint="@string/password"
         android:inputType="textPassword"
         android:layout_width="match_parent"
