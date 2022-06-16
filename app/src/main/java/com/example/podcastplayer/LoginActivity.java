@@ -97,6 +97,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     LoginResponse loginResponse = response.body();
                     Log.d(LOG_KEY, "Response: " + loginResponse.toString());
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     finish();
                 } else {
                     try {
