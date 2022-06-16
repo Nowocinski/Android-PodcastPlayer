@@ -85,4 +85,8 @@ public class LoginActivity extends AppCompatActivity {
     public void showError(String error) {
         Toast.makeText(LoginActivity.this, "message: " + error, Toast.LENGTH_LONG).show();
     }
+
+    public void showProgress(boolean progress) {
+        this.loginButton.setEnabled(!progress);
+    }
 }
