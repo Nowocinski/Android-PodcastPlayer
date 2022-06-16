@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
         // TODO: W przyszłości tworzenie obiektu powinno odbywać się przy pomocy dependency injection.
-        this.userManager = new UserManager();
+        this.userManager = ((App)this.getApplication()).getUserManager();
     }
 
     @Override
