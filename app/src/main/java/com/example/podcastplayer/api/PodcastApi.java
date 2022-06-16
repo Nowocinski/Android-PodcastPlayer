@@ -7,4 +7,7 @@ import retrofit2.http.POST;
 public interface PodcastApi {
     @POST("users/login")
     Call<LoginResponse> postLogin(@Body LoginCommand loginCommand);
+
+    @POST("users/registration")
+    Call<Void> postRegistration(@Body RegistrationCommand registrationCommand);
 }

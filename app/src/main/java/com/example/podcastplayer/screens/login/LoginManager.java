@@ -22,9 +22,13 @@ public class LoginManager {
     private LoginActivity loginActivity;
     private final UserStorage userStorage;
     private Call<LoginResponse> call;
+    private Retrofit retrofit;
+    private PodcastApi podcastApi;
 
-    public LoginManager(UserStorage userStorage) {
+    public LoginManager(UserStorage userStorage, PodcastApi podcastApi, Retrofit retrofit) {
         this.userStorage = userStorage;
+        this.podcastApi = podcastApi;
+        this.retrofit = retrofit;
     }
 
     public void onAttach(LoginActivity loginActivity) {
@@ -38,18 +42,6 @@ public class LoginManager {
 
     public void login(String email, String password) {
         if (this.call == null) {
-            Gson gson = new GsonBuilder().serializeNulls().create();
-            HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
-            OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                    .addInterceptor(loggingInterceptor)
-                    .build();
-            Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("http://10.0.2.2:5156/")
-                    .addConverterFactory(GsonConverterFactory.create(gson))
-                    .client(okHttpClient)
-                    .build();
-            PodcastApi podcastApi = retrofit.create(PodcastApi.class);
-
             this.call = podcastApi.postLogin(new LoginCommand(email, password));
             this.updateProgress();
             call.enqueue(new Callback<LoginResponse>() {

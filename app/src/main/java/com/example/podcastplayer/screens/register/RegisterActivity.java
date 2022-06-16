@@ -4,18 +4,22 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 
+import com.example.podcastplayer.App;
 import com.example.podcastplayer.R;
+import com.example.podcastplayer.api.RegistrationCommand;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class RegisterActivity extends AppCompatActivity {
-
+    private static final String LOG_KEY = "LOG_KEY@" + RegistrationCommand.class.getSimpleName();
+    private RegisterManager registerManager;
     @BindView(R.id.firstNameEditText)
     EditText firstNameEditText;
     @BindView(R.id.lastNameEditText)
@@ -30,6 +34,9 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
+
+        // TODO: W przyszłości tworzenie obiektu powinno odbywać się przy pomocy dependency injection.
+        this.registerManager = ((App)this.getApplication()).getRegisterManager();
     }
 
     @Override
@@ -41,7 +48,14 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.action_register) {
+            Log.d(this.LOG_KEY, "Started tryToRegister() method");
             this.tryToRegister();
+            Log.d(this.LOG_KEY, "Started this.registerManager.register() method");
+            this.registerManager.register(
+                    this.firstNameEditText.getText().toString(),
+                    this.lastNameEditText.getText().toString(),
+                    this.emailEditText.getText().toString(),
+                    this.passwordEditText.getText().toString());
             return true;
         }
         return super.onOptionsItemSelected(item);
