@@ -100,6 +100,7 @@ public class LoginActivity extends AppCompatActivity {
                     finish();
                 } else {
                     try {
+                        // TODO: Poprawić zwracany błąd przez serwer.
                         Toast.makeText(LoginActivity.this, "message: " + response.errorBody().string(), Toast.LENGTH_LONG).show();
                     } catch (Exception e) {
                         Log.d(LOG_KEY, "e.getMessage(): " + e.getMessage());
