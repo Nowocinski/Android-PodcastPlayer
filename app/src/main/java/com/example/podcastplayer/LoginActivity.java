@@ -1,13 +1,14 @@
 package com.example.podcastplayer;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.podcastplayer.api.LoginCommand;
 import com.example.podcastplayer.api.LoginResponse;
@@ -91,14 +92,22 @@ public class LoginActivity extends AppCompatActivity {
         call.enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                Log.d(LOG_KEY, "Response code: " + response.code());
+                if (response.isSuccessful()) {
+                    Log.d(LOG_KEY, "Response code: " + response.code());
 
-                LoginResponse loginResponse = response.body();
-                Log.d(LOG_KEY, "Email: " + loginResponse.email);
-                Log.d(LOG_KEY, "FirstName: " + loginResponse.firstName);
-                Log.d(LOG_KEY, "LastName: " + loginResponse.lastName);
-                Log.d(LOG_KEY, "Id: " + loginResponse.id);
-                Log.d(LOG_KEY, "Token: " + loginResponse.token);
+                    LoginResponse loginResponse = response.body();
+                    Log.d(LOG_KEY, "Email: " + loginResponse.email);
+                    Log.d(LOG_KEY, "FirstName: " + loginResponse.firstName);
+                    Log.d(LOG_KEY, "LastName: " + loginResponse.lastName);
+                    Log.d(LOG_KEY, "Id: " + loginResponse.id);
+                    Log.d(LOG_KEY, "Token: " + loginResponse.token);
+                } else {
+                    try {
+                        Toast.makeText(LoginActivity.this, "message: " + response.errorBody().string(), Toast.LENGTH_LONG).show();
+                    } catch (Exception e) {
+                        Log.d(LOG_KEY, "e.getMessage()" + e.getMessage());
+                    }
+                }
             }
 
             @Override
