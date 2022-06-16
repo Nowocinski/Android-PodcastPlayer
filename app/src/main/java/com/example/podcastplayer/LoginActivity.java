@@ -96,16 +96,13 @@ public class LoginActivity extends AppCompatActivity {
                     Log.d(LOG_KEY, "Response code: " + response.code());
 
                     LoginResponse loginResponse = response.body();
-                    Log.d(LOG_KEY, "Email: " + loginResponse.email);
-                    Log.d(LOG_KEY, "FirstName: " + loginResponse.firstName);
-                    Log.d(LOG_KEY, "LastName: " + loginResponse.lastName);
-                    Log.d(LOG_KEY, "Id: " + loginResponse.id);
-                    Log.d(LOG_KEY, "Token: " + loginResponse.token);
+                    Log.d(LOG_KEY, "Response: " + loginResponse.toString());
+                    finish();
                 } else {
                     try {
                         Toast.makeText(LoginActivity.this, "message: " + response.errorBody().string(), Toast.LENGTH_LONG).show();
                     } catch (Exception e) {
-                        Log.d(LOG_KEY, "e.getMessage()" + e.getMessage());
+                        Log.d(LOG_KEY, "e.getMessage(): " + e.getMessage());
                     }
                 }
             }
