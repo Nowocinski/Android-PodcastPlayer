@@ -1,4 +1,4 @@
-package com.example.podcastplayer;
+package com.example.podcastplayer.screens.login;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,13 +9,18 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.podcastplayer.App;
+import com.example.podcastplayer.MainActivity;
+import com.example.podcastplayer.R;
+import com.example.podcastplayer.screens.register.RegisterActivity;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String LOG_KEY = "LOG_KEY@" + LoginActivity.class.getSimpleName();
-    private UserManager userManager;
+    private LoginManager loginManager;
     @BindView(R.id.emailEditText)
     EditText emailEditText;
     @BindView(R.id.passwordEditText)
@@ -31,19 +36,19 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
         // TODO: W przyszłości tworzenie obiektu powinno odbywać się przy pomocy dependency injection.
-        this.userManager = ((App)this.getApplication()).getUserManager();
+        this.loginManager = ((App)this.getApplication()).getUserManager();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        this.userManager.onAttach(this);
+        this.loginManager.onAttach(this);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        this.userManager.onStop();
+        this.loginManager.onStop();
     }
 
     @OnClick(R.id.registerButton)
@@ -73,7 +78,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         if(!hasErrors) {
-            this.userManager.login(email, password);
+            this.loginManager.login(email, password);
         }
     }
 

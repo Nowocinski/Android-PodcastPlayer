@@ -1,7 +1,8 @@
-package com.example.podcastplayer;
+package com.example.podcastplayer.screens.login;
 
 import android.util.Log;
 
+import com.example.podcastplayer.UserStorage;
 import com.example.podcastplayer.api.LoginCommand;
 import com.example.podcastplayer.api.LoginResponse;
 import com.example.podcastplayer.api.PodcastApi;
@@ -16,13 +17,13 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class UserManager {
+public class LoginManager {
     private static final String LOG_KEY = "LOG_KEY@" + LoginActivity.class.getSimpleName();
     private LoginActivity loginActivity;
     private final UserStorage userStorage;
     private Call<LoginResponse> call;
 
-    public UserManager(UserStorage userStorage) {
+    public LoginManager(UserStorage userStorage) {
         this.userStorage = userStorage;
     }
 
@@ -54,7 +55,7 @@ public class UserManager {
             call.enqueue(new Callback<LoginResponse>() {
                 @Override
                 public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                    UserManager.this.call = null;
+                    LoginManager.this.call = null;
                     updateProgress();
                     if (response.isSuccessful()) {
                         Log.d(LOG_KEY, "Response code: " + response.code());
@@ -79,7 +80,7 @@ public class UserManager {
 
                 @Override
                 public void onFailure(Call<LoginResponse> call, Throwable t) {
-                    UserManager.this.call = null;
+                    LoginManager.this.call = null;
                     updateProgress();
                     if (loginActivity != null) {
                         loginActivity.showError(t.getLocalizedMessage());

@@ -1,4 +1,4 @@
-package com.example.podcastplayer;
+package com.example.podcastplayer.screens.register;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +8,8 @@ import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+
+import com.example.podcastplayer.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
