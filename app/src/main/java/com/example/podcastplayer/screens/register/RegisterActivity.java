@@ -3,16 +3,19 @@ package com.example.podcastplayer.screens.register;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.podcastplayer.App;
 import com.example.podcastplayer.R;
 import com.example.podcastplayer.api.RegistrationCommand;
+import com.example.podcastplayer.screens.login.LoginActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -40,6 +43,18 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        this.registerManager.onAttach(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        this.registerManager.onStop();
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         this.getMenuInflater().inflate(R.menu.register, menu);
         return super.onCreateOptionsMenu(menu);
@@ -48,14 +63,7 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.action_register) {
-            Log.d(this.LOG_KEY, "Started tryToRegister() method");
             this.tryToRegister();
-            Log.d(this.LOG_KEY, "Started this.registerManager.register() method");
-            this.registerManager.register(
-                    this.firstNameEditText.getText().toString(),
-                    this.lastNameEditText.getText().toString(),
-                    this.emailEditText.getText().toString(),
-                    this.passwordEditText.getText().toString());
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -92,7 +100,25 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         if(!hasErrors) {
-            // TODO: 2022-06-15
+            this.registerManager.register(
+                    this.firstNameEditText.getText().toString(),
+                    this.lastNameEditText.getText().toString(),
+                    this.emailEditText.getText().toString(),
+                    this.passwordEditText.getText().toString());
         }
+    }
+
+    public void registerSuccess() {
+        this.startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+        Toast.makeText(RegisterActivity.this, R.string.registered_account, Toast.LENGTH_LONG).show();
+        finish();
+    }
+
+    public void showError(String error) {
+        Toast.makeText(RegisterActivity.this, "message: " + error, Toast.LENGTH_LONG).show();
+    }
+
+    public void showProgress(boolean progress) {
+        // TODO: Dodać blokowanie przycisk, który jest w toolbarze.
     }
 }
