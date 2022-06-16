@@ -1,8 +1,6 @@
 package com.example.podcastplayer;
 
-import android.content.Intent;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.podcastplayer.api.LoginCommand;
 import com.example.podcastplayer.api.LoginResponse;
@@ -21,6 +19,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class UserManager {
     private static final String LOG_KEY = "LOG_KEY@" + LoginActivity.class.getSimpleName();
     private LoginActivity loginActivity;
+    private final UserStorage userStorage;
+
+    public UserManager(UserStorage userStorage) {
+        this.userStorage = userStorage;
+    }
 
     public void onAttach(LoginActivity loginActivity) {
         this.loginActivity = loginActivity;
@@ -52,6 +55,7 @@ public class UserManager {
 
                     LoginResponse loginResponse = response.body();
                     Log.d(LOG_KEY, "Response: " + loginResponse.toString());
+                    userStorage.login(loginResponse);
                     if (loginActivity != null) {
                         loginActivity.loginSuccess();
                     }
