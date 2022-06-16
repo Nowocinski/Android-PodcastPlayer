@@ -16,6 +16,10 @@ public class App extends Application {
     }
 
     public UserManager getUserManager() {
-        return userManager;
+        return this.userManager;
+    }
+
+    public UserStorage getUserStorage() {
+        return this.userStorage;
     }
 }

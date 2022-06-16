@@ -25,4 +25,14 @@ public class UserStorage {
         editor.putString(EMAIL, loginResponse.email);
         editor.apply();
     }
+
+    public boolean hasToLogin() {
+        return this.sharedPreferences.getString(this.TOKEN, "").isEmpty();
+    }
+
+    public void logout() {
+        SharedPreferences.Editor editor = this.sharedPreferences.edit();
+        editor.clear();
+        editor.apply();
+    }
 }
