@@ -73,7 +73,6 @@
 
         <TextView
             android:id="@+id/registerButton"
-            style="@style/aaa"
             android:layout_width="match_parent"
             android:text="@string/register"
             android:layout_height="wrap_content" />
