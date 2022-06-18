@@ -1,36 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".screens.login.LoginActivity"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/emailEditText"
-        android:hint="@string/e_mail"
-        android:inputType="textEmailAddress"
+    <ImageView
+        android:src="@drawable/bg"
+        android:scaleType="centerCrop"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent" />
 
-    <EditText
-        android:id="@+id/passwordEditText"
-        android:hint="@string/password"
-        android:inputType="textPassword"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        tools:context=".screens.login.LoginActivity"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/loginButton"
-        android:text="@string/login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <ImageView
+            android:src="@drawable/logo"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="94.0dp"
+            android:layout_height="112.0dp" />
 
-    <Button
-        android:id="@+id/registerButton"
-        android:layout_width="match_parent"
-        android:text="@string/register"
-        android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/emailEditText"
+            android:hint="@string/e_mail"
+            android:inputType="textEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-</LinearLayout>
+        <EditText
+            android:id="@+id/passwordEditText"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/loginButton"
+            android:text="@string/login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/registerButton"
+            android:layout_width="match_parent"
+            android:text="@string/register"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</FrameLayout>
