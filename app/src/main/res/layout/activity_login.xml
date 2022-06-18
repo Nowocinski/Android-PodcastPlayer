@@ -63,15 +63,17 @@
                 android:textColor="@color/login_text_color_selector"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
+        <TextView
             android:id="@+id/loginButton"
+            style="@style/Widget.AppCompat.Button.Colored"
             android:text="@string/login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:height="48dp"/>
 
-        <Button
+        <TextView
             android:id="@+id/registerButton"
+            style="@style/aaa"
             android:layout_width="match_parent"
             android:text="@string/register"
             android:layout_height="wrap_content" />

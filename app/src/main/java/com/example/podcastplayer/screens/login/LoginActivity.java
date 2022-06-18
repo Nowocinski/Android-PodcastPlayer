@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,9 +28,9 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.passwordEditText)
     EditText passwordEditText;
     @BindView(R.id.loginButton)
-    Button loginButton;
+    TextView loginButton;
     @BindView(R.id.registerButton)
-    Button registerButton;
+    TextView registerButton;
     @BindView(R.id.emailTextInputLayout)
     TextInputLayout emailTextInputLayout;
     @BindView(R.id.passwordTextInputLayout)
