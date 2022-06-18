@@ -5,6 +5,39 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+
+    <!-- Imported -->
+    <color name="colorPrimary">#C1185B</color>
+    <color name="colorPrimaryDark">#a21c51</color>
+    <color name="colorAccent">@color/banana_yellow</color>
+
+    <color name="white">#ffffff</color>
+    <color name="dark_jungle_green">#212121</color>
+    <color name="davy_grey">#525252</color>
+    <color name="munsell">#f2f2f2</color>
+    <color name="ash_grey">#b6b6b6</color>
+    <color name="old_lavender">#727272</color>
+    <color name="banana_yellow">#ffeb3b</color>
+    <color name="black">#000000</color>
+    <color name="manatee">#999999</color>
+    <color name="bright_maroon">#c2185b</color>
+    <color name="platinum">#e5e5e5</color>
+    <color name="white1">#fefefe</color>
+    <color name="dark_jungle_green1">#1b1b1b</color>
+    <color name="carmine_pink">#ef4545</color>
+    <color name="coral_red">#f44336</color>
+    <color name="dark_jungle_green2">#21272b</color>
+    <color name="rosso_corsa">#d50303</color>
+    <color name="taupe_gray">#898989</color>
+    <color name="silver">#c6c6c6</color>
+    <color name="pearl_aqua">#7fcac3</color>
+    <color name="cool_grey">#8b969a</color>
+    <color name="outer_space">#3c474c</color>
+    <color name="platinum1">#dfe1e2</color>
+    <color name="medium_jungle_green">#263238</color>
+    <color name="silver1">#bbbbbb</color>
+
+    <color name="dark_yellow">#d3c438</color>
+    <color name="episode_description_background">#cc212121</color>
+    <color name="play_background">@color/old_lavender</color>
 </resources>
