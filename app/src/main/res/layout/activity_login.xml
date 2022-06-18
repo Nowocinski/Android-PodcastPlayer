@@ -24,23 +24,41 @@
             android:layout_width="94.0dp"
             android:layout_height="112.0dp" />
 
-        <EditText
-            android:id="@+id/emailEditText"
-            android:drawableLeft="@drawable/ic_email_selector"
-            android:drawableStart="@drawable/ic_email_selector"
-            android:hint="@string/e_mail"
-            android:inputType="textEmailAddress"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailTextInputLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:boxBackgroundMode="none"
+            app:errorEnabled="true"
+            android:textColorHint="@color/login_text_color_selector">
+            <EditText
+                android:id="@+id/emailEditText"
+                android:drawableLeft="@drawable/ic_email_selector"
+                android:drawableStart="@drawable/ic_email_selector"
+                android:hint="@string/e_mail"
+                android:inputType="textEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/login_text_color_selector"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/passwordEditText"
-            android:drawableLeft="@drawable/ic_password_selector"
-            android:drawableStart="@drawable/ic_password_selector"
-            android:hint="@string/password"
-            android:inputType="textPassword"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordTextInputLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:boxBackgroundMode="none"
+            app:errorEnabled="true"
+            android:textColorHint="@color/login_text_color_selector">
+            <EditText
+                android:id="@+id/passwordEditText"
+                android:drawableLeft="@drawable/ic_password_selector"
+                android:drawableStart="@drawable/ic_password_selector"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/login_text_color_selector"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/loginButton"
