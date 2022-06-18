@@ -16,9 +16,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".screens.login.LoginActivity"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingLeft="51dp"
+        android:paddingRight="51dp">
 
         <ImageView
+            android:layout_marginTop="86dp"
             android:src="@drawable/logo"
             android:layout_gravity="center_horizontal"
             android:layout_width="94.0dp"
