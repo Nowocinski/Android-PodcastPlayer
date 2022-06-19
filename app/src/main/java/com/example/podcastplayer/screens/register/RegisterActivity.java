@@ -38,6 +38,9 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
 
+        this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        this.getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
+
         // TODO: W przyszłości tworzenie obiektu powinno odbywać się przy pomocy dependency injection.
         this.registerManager = ((App)this.getApplication()).getRegisterManager();
     }
@@ -120,5 +123,11 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void showProgress(boolean progress) {
         // TODO: Dodać blokowanie przycisk, który jest w toolbarze.
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return super.onSupportNavigateUp();
     }
 }
