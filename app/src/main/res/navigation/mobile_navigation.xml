@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.podcastplayer.ui.home.HomeFragment"
+        android:name="com.example.podcastplayer.ui.Subscribe.SubscribeFragment"
         android:label="@string/menu_subscribe"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_subscribe" />
 
     <fragment
         android:id="@+id/nav_slideshow"
