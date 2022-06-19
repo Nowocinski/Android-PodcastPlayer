@@ -2,6 +2,7 @@ package com.example.podcastplayer;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
@@ -11,6 +12,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
+import androidx.core.view.GravityCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -20,7 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.podcastplayer.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
     private UserStorage userStorage;
@@ -57,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        this.setNavigationViewListener();
     }
 
     @Override
@@ -86,5 +90,26 @@ public class MainActivity extends AppCompatActivity {
     private void goToLogin() {
         this.startActivity(new Intent(MainActivity.this, LoginActivity.class));
         finish();
+    }
+
+    // https://stackoverflow.com/questions/42297381/onclick-event-in-navigation-drawer
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+
+            case R.id.nav_logout: {
+                Log.d("LOG_KEY@" + this.getClass().getSimpleName(), "Wylogowano!");
+                break;
+            }
+        }
+
+        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    private void setNavigationViewListener() {
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
     }
 }
