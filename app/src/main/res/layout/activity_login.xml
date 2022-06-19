@@ -69,10 +69,12 @@
             <TextView
                 android:id="@+id/loginButton"
                 style="@style/Widget.AppCompat.Button.Colored"
-                android:text="@string/login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:height="48dp"/>
+                android:height="48dp"
+                android:text="@string/login"
+                android:fontFamily="@font/aguafina_script"
+                android:textColor="@color/dark_jungle_green"/>
 
             <TextView
                 android:id="@+id/registerButton"
