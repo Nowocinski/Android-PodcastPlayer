@@ -8,12 +8,12 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.podcastplayer.ui.home.HomeFragment"
-        android:label="@string/menu_home"
+        android:label="@string/menu_subscribe"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_slideshow"
         android:name="com.example.podcastplayer.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
+        android:label="@string/menu_discover"
         tools:layout="@layout/fragment_slideshow" />
 </navigation>
