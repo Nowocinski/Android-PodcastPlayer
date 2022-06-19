@@ -22,4 +22,14 @@
     <style name="Theme.PodcastPlayer.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.PodcastPlayer.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="TextInputLayoutStyle">
+        <item name="android:textColorHint">@color/login_text_color_selector</item>
+        <item name="errorEnabled">true</item>
+    </style>
+
+    <style name="EditTextStyle">
+        <item name="android:textColor">@color/login_text_color_selector</item>
+        <item name="android:fontFamily">@font/aclonica</item>
+    </style>
 </resources>
