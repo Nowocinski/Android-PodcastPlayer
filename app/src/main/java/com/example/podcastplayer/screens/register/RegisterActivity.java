@@ -16,6 +16,7 @@ import com.example.podcastplayer.App;
 import com.example.podcastplayer.R;
 import com.example.podcastplayer.api.RegistrationCommand;
 import com.example.podcastplayer.screens.login.LoginActivity;
+import com.google.android.material.textfield.TextInputLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,6 +32,14 @@ public class RegisterActivity extends AppCompatActivity {
     EditText emailEditText;
     @BindView(R.id.passwordEditText)
     EditText passwordEditText;
+    @BindView(R.id.firstNameTextInputLayout)
+    TextInputLayout firstNameTextInputLayout;
+    @BindView(R.id.lastNameTextInputLayout)
+    TextInputLayout lastNameTextInputLayout;
+    @BindView(R.id.emailTextInputLayout)
+    TextInputLayout emailTextInputLayout;
+    @BindView(R.id.passwordTextInputLayout)
+    TextInputLayout passwordTextInputLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,34 +89,38 @@ public class RegisterActivity extends AppCompatActivity {
         boolean hasErrors = false;
 
         if (firstName.isEmpty()) {
-            this.firstNameEditText.setError(getString(R.string.this_field_cant_be_empty));
+            this.firstNameTextInputLayout.setError(getString(R.string.this_field_cant_be_empty));
             hasErrors = true;
+        } else {
+            this.firstNameTextInputLayout.setError(null);
         }
         if (lastName.isEmpty()) {
-            this.lastNameEditText.setError(getString(R.string.this_field_cant_be_empty));
+            this.lastNameTextInputLayout.setError(getString(R.string.this_field_cant_be_empty));
             hasErrors = true;
+        } else {
+            this.lastNameTextInputLayout.setError(null);
         }
         if (email.isEmpty()) {
-            this.emailEditText.setError(getString(R.string.this_field_cant_be_empty));
+            this.emailTextInputLayout.setError(getString(R.string.this_field_cant_be_empty));
             hasErrors = true;
         } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            this.emailEditText.setError(getString(R.string.not_an_email));
+            this.emailTextInputLayout.setError(getString(R.string.not_an_email));
             hasErrors = true;
+        } else {
+            this.emailTextInputLayout.setError(null);
         }
         if (password.isEmpty()) {
-            this.passwordEditText.setError(getString(R.string.this_field_cant_be_empty));
+            this.passwordTextInputLayout.setError(getString(R.string.this_field_cant_be_empty));
             hasErrors = true;
         } else if (password.length() < 6) {
-            this.passwordEditText.setError(getString(R.string.password_too_short));
+            this.passwordTextInputLayout.setError(getString(R.string.password_too_short));
             hasErrors = true;
+        } else {
+            this.passwordTextInputLayout.setError(null);
         }
 
-        if(!hasErrors) {
-            this.registerManager.register(
-                    this.firstNameEditText.getText().toString(),
-                    this.lastNameEditText.getText().toString(),
-                    this.emailEditText.getText().toString(),
-                    this.passwordEditText.getText().toString());
+        if (!hasErrors) {
+            this.registerManager.register(firstName, lastName, email, password);
         }
     }
 
