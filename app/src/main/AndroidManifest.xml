@@ -30,10 +30,12 @@
         </activity>
         <activity
             android:name=".screens.register.RegisterActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/RegisterTheme" />
         <activity
             android:name=".screens.login.LoginActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/LoginTheme"/>
     </application>
 
 </manifest>
