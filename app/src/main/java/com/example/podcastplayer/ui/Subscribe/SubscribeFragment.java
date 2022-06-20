@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.podcastplayer.R;
 import com.example.podcastplayer.databinding.FragmentSubscribeBinding;
@@ -56,6 +57,8 @@ public class SubscribeFragment extends Fragment {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_add:
+                NavHostFragment.findNavController(SubscribeFragment.this)
+                        .navigate(R.id.action_nav_subscribe_to_nav_discover);
                 return true;
             case R.id.action_sort:
                 return true;

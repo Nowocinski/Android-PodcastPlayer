@@ -9,7 +9,11 @@
         android:id="@+id/nav_subscribe"
         android:name="com.example.podcastplayer.ui.Subscribe.SubscribeFragment"
         android:label="@string/menu_subscribe"
-        tools:layout="@layout/fragment_subscribe" />
+        tools:layout="@layout/fragment_subscribe" >
+        <action
+            android:id="@+id/action_nav_subscribe_to_nav_discover"
+            app:destination="@id/nav_discover" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_discover"
