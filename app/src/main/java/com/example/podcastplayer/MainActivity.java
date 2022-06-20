@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.TextView;
 
 import com.example.podcastplayer.screens.login.LoginActivity;
 import com.google.android.material.snackbar.Snackbar;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
     private UserStorage userStorage;
+    private NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +63,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationUI.setupWithNavController(navigationView, navController);
 
         this.setNavigationViewListener();
+
+        View headerView = this.navigationView.getHeaderView(0);
+        TextView drawerNameTextView = headerView.findViewById(R.id.drawerNameTextView);
+        TextView drawerEmailTextView = headerView.findViewById(R.id.drawerEmailTextView);
+
+        drawerNameTextView.setText(this.userStorage.getFullName());
+        drawerEmailTextView.setText(this.userStorage.getEmail());
     }
 
     @Override
@@ -109,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void setNavigationViewListener() {
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        this.navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
 }
