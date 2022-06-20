@@ -3,16 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_subscribe">
 
     <fragment
-        android:id="@+id/nav_home"
+        android:id="@+id/nav_subscribe"
         android:name="com.example.podcastplayer.ui.Subscribe.SubscribeFragment"
         android:label="@string/menu_subscribe"
         tools:layout="@layout/fragment_subscribe" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
+        android:id="@+id/nav_discover"
         android:name="com.example.podcastplayer.ui.Discover.DiscoverFragment"
         android:label="@string/menu_discover"
         tools:layout="@layout/fragment_discover" />

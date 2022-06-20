@@ -23,7 +23,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.podcastplayer.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity /*implements NavigationView.OnNavigationItemSelectedListener*/ {
+    public static final String LOG_KEY = "LOG_KEY@" + MainActivity.class.getSimpleName();
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
     private UserStorage userStorage;
@@ -51,18 +52,41 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
         DrawerLayout drawer = binding.drawerLayout;
-        NavigationView navigationView = binding.navView;
+        this.navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_slideshow)
+                R.id.nav_subscribe, R.id.nav_discover)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        this.setNavigationViewListener();
+        // https://stackoverflow.com/questions/59827803/how-to-set-navigationview-with-appbarconfiguration
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.nav_subscribe:
+                        navController.navigate(R.id.nav_subscribe);
+                        break;
+                    case R.id.nav_discover:
+                        navController.navigate(R.id.nav_discover);
+                        break;
+                    case R.id.nav_logout: {
+                        Log.d("LOG_KEY@" + this.getClass().getSimpleName(), "Wylogowano!");
+                        break;
+                    }
+                }
+
+                DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+                drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            }
+        });
+
+        //this.setNavigationViewListener();
 
         View headerView = this.navigationView.getHeaderView(0);
         TextView drawerNameTextView = headerView.findViewById(R.id.drawerNameTextView);
@@ -102,7 +126,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     // https://stackoverflow.com/questions/42297381/onclick-event-in-navigation-drawer
-    @Override
+    // Działa dla akcji kliknięcia, ale przy zmianie fragmentu górny pasek się nie zmienia
+    // Działa za to rozwiązanie navigationView.setNavigationItemSelectedListener w metodzie onCreate
+    /*@Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
 
@@ -120,5 +146,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void setNavigationViewListener() {
         this.navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-    }
+    }*/
 }
